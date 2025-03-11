@@ -1,11 +1,18 @@
+/* eslint-disable react/prop-types */
 import { Star } from 'lucide-react'
-import React, { useContext } from 'react'
+import  { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Shopcontext } from '../Context/ShopContext'
 
 const ProductDisplay = (props) => {
     const {product} = props
     const {addToCart} = useContext(Shopcontext)
+
+    const [tailleChose , setTailleChose] = useState('s');
+
+    const handleChoseTaille = (taille)=>{
+      setTailleChose(taille)
+    }
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 my-20 md:gap-10 px-6 md:px-0'>
@@ -39,11 +46,11 @@ const ProductDisplay = (props) => {
       <div>
         <h1 className='font-semibold text-gray-400 text-2xl mt-4'>Select Size</h1>
         <div className='flex gap-4 items-center my-4'>
-            <div className='border bg-gray-100 p-4'>S</div>
-            <div className='border bg-gray-100 p-4'>M</div>
-            <div className='border bg-gray-100 p-4'>L</div>
-            <div className='border bg-gray-100 p-4'>XL</div>
-            <div className='border bg-gray-100 p-4'>XXL</div>
+            <div className={`border bg-gray-100 p-4 hover:cursor-pointer  ${tailleChose === 's' ? "bg-red-600 text-white " : ""}`} onClick={()=>handleChoseTaille('s')}>S</div>
+            <div className={`border bg-gray-100 p-4 hover:cursor-pointer  ${tailleChose === 'm' ? "bg-red-600 text-white " : ""}`} onClick={()=>handleChoseTaille('m')}>M</div>
+            <div className={`border bg-gray-100 p-4 hover:cursor-pointer  ${tailleChose === 'l' ? "bg-red-600 text-white " : ""}`} onClick={()=>handleChoseTaille('l')}>L</div>
+            <div className={`border bg-gray-100 p-4 hover:cursor-pointer  ${tailleChose === 'xl' ? "bg-red-600 text-white " : ""}`} onClick={()=>handleChoseTaille('xl')}>XL</div>
+            <div className={`border bg-gray-100 p-4 hover:cursor-pointer  ${tailleChose === 'xxl' ? "bg-red-600 text-white " : ""}`} onClick={()=>handleChoseTaille('xxl')}>XXL</div>
         </div>
       </div>
       <Link to='/cart'>
