@@ -54,7 +54,7 @@ const Footer = () => {
       </div>
       {/* bottom section */}
       <div className='mt-8 border-t border-gray-700 pt-6 text-center text-sm'>
-        <p>&copy; {new Date().getFullYear()}<span className='text-red-500'>Clothify</span>.All rights reserved</p>
+        <p>&copy; {new Date().getFullYear()}<span className='text-red-500'>Clothify</span>.All rights reserved | create By  <a href="https://sofyaneacoriy.netlify.app/" target='_blank' className='hover:text-red-600 font-semibold hover:underline transition-transform duration-300 ease-in-out'>Sofyane Acoriy</a></p>
       </div>
     </footer>
   )

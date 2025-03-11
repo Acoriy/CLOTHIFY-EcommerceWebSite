@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import  { useContext, useState } from 'react'
 import Logo from '../../assets/Logo.png'
 import { ShoppingCart } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -11,6 +11,13 @@ const Navbar = () => {
 
   const {getTotalCartItems} = useContext(Shopcontext)
 
+  const [activelink , setActiveLink] = useState('home');
+
+  const handleLink = (link)=>{
+     setActiveLink(link)
+  }
+
+
   const toggleMenu = () => {
     setShowMenu(!showMenu)   //it will toggle if the showmenu is false it will be true and if true it will be false
   }
@@ -22,10 +29,30 @@ const Navbar = () => {
         <div className='flex items-center gap-5'>
             <nav className='hidden md:block'>
                 <ul className='flex items-center font-semibold text-xl gap-7'>
-                    <Link to='/'><li>Home</li></Link>
-                    <Link to='/mens'><li>Mens</li></Link>
-                    <Link to='/womens'><li>Womens</li></Link>
-                    <Link to='/kids'><li>Kids</li></Link>
+                    <Link to='/'>
+                      <li className={`relative group ${activelink === 'home' ? "border-b-2 border-b-red-600 text-red-600 font-semibold" : "text-xl font-normal"}`} onClick={()=>handleLink('home')}>
+                        Home
+                        <span className='absolute bottom-[-3px] left-0 w-full h-[1.5px] bg-red-600 scale-x-0 group-hover:scale-100 transition-transform duration-300 ease-in-out'></span>
+                      </li>
+                    </Link>
+                    <Link to='/mens'>
+                      <li className={`relative group ${activelink === 'mens' ? "border-b-2 border-b-red-600 text-red-600 font-semibold" : "text-xl font-normal"}`} onClick={()=>handleLink('mens')}>
+                        Mens
+                        <span className='absolute bottom-[-3px] left-0 w-full h-[1.5px] bg-red-600 scale-x-0 group-hover:scale-100 transition-transform duration-300 ease-in-out'></span>
+                      </li>
+                    </Link>
+                    <Link to='/womens'>
+                      <li className={`relative group ${activelink === 'womens' ? "border-b-2 border-b-red-600 text-red-600 font-semibold" : "text-xl font-normal"}`} onClick={()=>handleLink('womens')}>
+                        Womens
+                        <span className='absolute bottom-[-3px] left-0 w-full h-[1.5px] bg-red-600 scale-x-0 group-hover:scale-100 transition-transform duration-300 ease-in-out'></span>
+                      </li>
+                    </Link>
+                    <Link to='/kids'>
+                      <li className={`relative group ${activelink === 'kids' ? "border-b-2 border-b-red-600 text-red-600 font-semibold" : "text-xl font-normal"}`} onClick={()=>handleLink('kids')}>
+                        Kids
+                        <span className='absolute bottom-[-3px] left-0 w-full h-[1.5px] bg-red-600 scale-x-0 group-hover:scale-100 transition-transform duration-300 ease-in-out'></span>
+                      </li>
+                    </Link>
                     <Link to='/login'><button className='bg-red-500 text-white px-4 py-1 rounded-md'>Login</button></Link>
                     
                 </ul>
